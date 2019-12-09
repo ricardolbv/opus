@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import './Login.dart';
 
-class Opus extends StatefulWidget{
+class InitialWidget extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return OpusState();
+    return InitialWidgetState();
   }
 }
 
-class OpusState extends State <Opus> {
+class InitialWidgetState extends State <InitialWidget> {
   @override
   Widget build(BuildContext context) {
-    //
     return SplashScreen(
       seconds: 10,
       title: Text("Bem vindo(a) ao Opus"),
@@ -20,7 +19,6 @@ class OpusState extends State <Opus> {
       backgroundColor: Colors.white,
       photoSize: 100.00,
       navigateAfterSeconds: Login(),
-
     );
   }
 }

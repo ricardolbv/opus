@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   splashscreen: ^1.2.0
   flutter_login: ^1.0.4
+  auto_animated: any
 
 
 dev_dependencies:
@@ -31,6 +32,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/octopus.png
+    - assets/cosmeticos.jpg
+    - assets/educacao.jpg
+    - assets/massoterapia.jpg
+    - assets/mecanico.png
+    - assets/jardineiro.jpg
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
