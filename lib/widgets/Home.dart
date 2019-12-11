@@ -1,9 +1,9 @@
-import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:opus/widgets/mostUsedWidgets/AppOpusBar.dart';
 import 'package:opus/widgets/mostUsedWidgets/BottomOpusBar.dart';
+import 'package:opus/widgets/Trabalhadores.dart';
 
 class Home extends StatefulWidget {
   State<StatefulWidget> createState() {
@@ -30,8 +30,15 @@ class HomeState extends State <Home> {
                 height: 300.00,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
+
                   children: <Widget>[
-                    Image.asset('assets/mecanico.png',fit: BoxFit.fill,),
+                   GestureDetector(child: Image.asset('assets/mecanico.png',fit: BoxFit.fill),onTap: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(builder: (context) => Trabalhadores()),
+
+                     );
+                   }),
                     Image.asset('assets/cosmeticos.jpg',fit: BoxFit.fill,),
                     Image.asset('assets/massoterapia.jpg',fit: BoxFit.fill,),
                     Image.asset('assets/educacao.jpg',fit: BoxFit.fill,),
@@ -45,3 +52,5 @@ class HomeState extends State <Home> {
     );
   }
 }
+
+
