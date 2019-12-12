@@ -6,11 +6,6 @@ import 'package:opus/widgets/Home.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-const users = const {
-  'opustest01': '12345',
-};
-
-
 class Login extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -18,60 +13,52 @@ class Login extends StatefulWidget{
   }
 }
 
-
 class LoginState extends State <Login> {
-  Duration get loginTime => Duration(milliseconds: 2250);
-
   Future<String> _authUser(LoginData data) {
-    getData();
-    print('Name: ${data.name}, Password: ${data.password}');
-    return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(data.name)) {
-        return 'Username not exists';
+    String url = 'http://10.0.2.2:3000/api/cliente/login';
+    Map<String, String> headers = {"Content-type": "application/json"};
+    String json = '{"email": "${data.name}", "senha": "${data.password}"}';
+    // make POST request
+    return http.post(url, headers: headers, body: json).then((response) {
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        return null;
       }
-      if (users[data.name] != data.password) {
-        return 'Password does not match';
-      }
-      return null;
+      return 'Usuário inválido';
     });
   }
 
-  Future<String> _recoverPassword(String name) {
-    print('Name: $name');
-    return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(name)) {
-        return 'Username not exists';
+  Future<String> _signupUser(LoginData data) {
+    String url = 'http://10.0.2.2:3000/api/cliente/insert';
+    Map<String, String> headers = {"Content-type": "application/json"};
+    String json = '{"email": "${data.name}", "senha": "${data.password}"}';
+    // make POST request
+    return http.post(url, headers: headers, body: json).then((response) {
+      print(response.statusCode);
+      if (response.statusCode == 201) {
+        return null;
       }
-      return null;
+      return 'Usuário já existente';
     });
   }
-
-  Future<String> getData() async {
-    var response = await http.get(
-        Uri.encodeFull("https://localhost:3000/api/profissional/selectAll"),
-        headers: {"Accept": "application/json"});
-    return "Success";
-  }
-
-
 
   Widget build(BuildContext context) {
     return FlutterLogin(
       title: 'Opus',
       logo: 'assets/octopus.png',
       onLogin: _authUser,
-      onSignup: null,
+      onSignup: _signupUser,
       onSubmitAnimationCompleted: (){
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context)=>Home(),
         ));
       },
       messages: LoginMessages(
-        usernameHint: 'Usuario',
+        usernameHint: 'E-Mail',
         passwordHint: 'Senha',
         signupButton: 'Cadastrar',
         forgotPasswordButton: 'Esqueci minha senha',
-        confirmPasswordError: 'Senha incorreta',
+        confirmPasswordError: 'As senhas não coincidem',
         recoverPasswordDescription: 'Voce vai receber instruções no email',
         recoverPasswordButton: 'Recuperar senha',
         goBackButton: 'Voltar',
