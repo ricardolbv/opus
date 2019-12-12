@@ -13,7 +13,7 @@ class InitialWidgetState extends State <InitialWidget> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 10,
+      seconds: 3,
       title: Text("Bem vindo(a) ao Opus"),
       image: Image.asset('assets/octopus.png'),
       backgroundColor: Colors.white,
