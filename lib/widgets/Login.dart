@@ -6,6 +6,7 @@ import 'package:opus/widgets/Home.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+
 class Login extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -15,6 +16,8 @@ class Login extends StatefulWidget{
 
 class LoginState extends State <Login> {
   Future<String> _authUser(LoginData data) {
+
+
     String url = 'http://10.0.2.2:3000/api/cliente/login';
     Map<String, String> headers = {"Content-type": "application/json"};
     String json = '{"email": "${data.name}", "senha": "${data.password}"}';
@@ -41,6 +44,7 @@ class LoginState extends State <Login> {
       return 'Usuário já existente';
     });
   }
+
 
   Widget build(BuildContext context) {
     return FlutterLogin(
