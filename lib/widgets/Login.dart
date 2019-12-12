@@ -7,7 +7,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 const users = const {
-  'opustest01': '12345',
+  'opus@gmail.com': '12345',
 };
 
 
@@ -23,7 +23,6 @@ class LoginState extends State <Login> {
   Duration get loginTime => Duration(milliseconds: 2250);
 
   Future<String> _authUser(LoginData data) {
-    getData();
     print('Name: ${data.name}, Password: ${data.password}');
     return Future.delayed(loginTime).then((_) {
       if (!users.containsKey(data.name)) {
@@ -44,13 +43,6 @@ class LoginState extends State <Login> {
       }
       return null;
     });
-  }
-
-  Future<String> getData() async {
-    var response = await http.get(
-        Uri.encodeFull("https://localhost:3000/api/profissional/selectAll"),
-        headers: {"Accept": "application/json"});
-    return "Success";
   }
 
 

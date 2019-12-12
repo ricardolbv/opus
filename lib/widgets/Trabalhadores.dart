@@ -5,31 +5,32 @@ import 'package:opus/widgets/mostUsedWidgets/BottomOpusBar.dart';
 import 'package:opus/widgets/mostUsedWidgets/ListOfProfiles.dart';
 
 class Trabalhadores extends StatelessWidget{
-  var _listTrab;
+
+  List  trabalhadores = [ // Variavel que lidara com resposta do request
+    ["Francisco","Faço carretos e tals"],
+    ["Zezinho", "Coloco zulejos rgergererrer"],
+    ["rgerg", "Jogo nfwngnroigjpoeieo"],
+  ];
 
   Widget build(BuildContext context){
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
               appBar: AppOpusBar,
               bottomNavigationBar: BottomOpusBar(),
 
-          body:
-                ListOfProfiles(
-                  author: "Teset11",
-                  title: "Trabalhador",
-          ),
-
-        )
-    );
+          body: new
+                ListView.builder(
+                  itemBuilder: (BuildContext ctx, int index) =>
+                           _listOf(ctx, index, trabalhadores),
+                  itemCount:  trabalhadores.length,
+          )
+        );
   }
 }
 
-List <ListOfProfiles> _listOf(List lista){
-  return lista.map((cardProfile) => ListOfProfiles(title: cardProfile[0][0], author: cardProfile[0][1],)).toList();
+Widget _listOf(BuildContext ctx,int index, List trabalhadores){
+return new ListOfProfiles(nome:trabalhadores[index][0],author:trabalhadores[index][1] );
 }
 
 
-var mocaDados = [
-   ["Test","gergeg"],
-  ["Outro user", "Outro usuario"]
-];
+// Metodo que tranforma todo mundo em vetor e passa ao listOf
+

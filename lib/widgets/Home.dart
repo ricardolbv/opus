@@ -23,27 +23,53 @@ class HomeState extends State <Home> {
             children: <Widget>[
               Container(
                 width: 300.00,
-                height: 30.00,
-              ), //Container da barra de pesquisa
+                height: 50.00,
+              //  color: Colors.blue[400],
+                padding: EdgeInsets.all(100.00),
+                child: Text(
+                  'These are wise words, enterprising men quote \'em.',
+                  style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0),
+                ),
+              ), //Container da
+               // barra de pesquisa
               Container(// Container da list view
                 margin: EdgeInsets.symmetric(vertical: 20.0),
                 height: 300.00,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-
                   children: <Widget>[
-                   GestureDetector(child: Image.asset('assets/mecanico.png',fit: BoxFit.fill),onTap: () {
+                Container(color: Colors.blue[400] ,alignment: Alignment.center,padding: EdgeInsets.all(30.0),child: GestureDetector(child: Image.asset('assets/mecanico.png',fit: BoxFit.fitHeight),onTap: () {
                      Navigator.push(
                        context,
                        MaterialPageRoute(builder: (context) => Trabalhadores()),
 
                      );
-                   }),
-                    Image.asset('assets/cosmeticos.jpg',fit: BoxFit.fill,),
-                    Image.asset('assets/massoterapia.jpg',fit: BoxFit.fill,),
-                    Image.asset('assets/educacao.jpg',fit: BoxFit.fill,),
-                    Image.asset('assets/jardineiro.jpg',fit: BoxFit.fill,),
-                  ],
+                   }),),
+
+                    Container(color: Colors.blue[400] ,alignment: Alignment.center,padding: EdgeInsets.all(30.0),child: GestureDetector(child: Image.asset('assets/massoterapia.jpg',fit: BoxFit.fitHeight),onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Trabalhadores()),
+
+                      );
+                    }),),
+
+                    Container(color: Colors.blue[400] ,alignment: Alignment.center,padding: EdgeInsets.all(30.0),child: GestureDetector(child: Image.asset('assets/cosmeticos.jpg',fit: BoxFit.fitHeight),onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Trabalhadores()),
+
+                      );
+                    }),),
+
+                    Container(color: Colors.blue[400] ,alignment: Alignment.center,padding: EdgeInsets.all(30.0),child: GestureDetector(child: Image.asset('assets/jardineiro.jpg',fit: BoxFit.fitHeight),onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Trabalhadores()),
+
+                      );
+                    }),),
+  ]
                 ),
               ),
             ]
